@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wartan - Aplikasi Pemesanan</title>
+
+    <!-- Google Fonts: Poppins untuk tampilan modern dan elegan -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Konfigurasi Tema Tailwind (Warna Utama Hijau) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        // Palet warna hijau utama (Emerald/Green custom)
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',   // Warna utama default
+                            600: '#16a34a',   // Hover dan accent
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Kustomisasi CSS Tambahan -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Efek Glassmorphism untuk Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- Background Ornamen Dekoratif (Blobs) -->
+    <div class="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-teal-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-primary-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000">
+        </div>
+    </div>
+
+    <!-- ✅ NAVBAR -->
+    <header class="glass-nav fixed w-full top-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Brand -->
+                <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer group">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-primary-500/40 group-hover:rotate-12 transition-transform duration-300">
+                        W
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Wartan<span
+                            class="text-primary-600 text-3xl leading-none">.</span></span>
+                </div>
+
+                <!-- Navigasi Desktop -->
+                <nav class="hidden md:flex space-x-10 items-center">
+                    <a href="#"
+                        class="text-primary-600 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary-600 after:rounded-full">Beranda</a>
+                    <a href="#menu" class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Menu</a>
+                </nav>
+
+
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-600 hover:text-slate-900 focus:outline-none p-2 bg-slate-100 rounded-lg">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ✅ KONTEN HALAMAN (HERO SECTION) -->
+    <main class="flex-grow pt-28 pb-16 z-10 relative">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[85vh] flex items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+
+                <!-- Bagian Teks (Kiri) -->
+                <div class="space-y-8 pr-0 lg:pr-10 z-10 text-center lg:text-left">
+                    <!-- Badge -->
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mx-auto lg:mx-0 shadow-sm">
+                        <span class="relative flex h-3 w-3">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
+                        </span>
+                        Aplikasi Pemesanan Paling Dipercaya
+                    </div>
+
+                    <!-- Headline utama -->
+                    <h1
+                        class="text-5xl lg:text-7xl font-execrabold font-bold leading-tight text-slate-900 tracking-tight">
+                        Pesan Layanan <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-teal-500">Kapan
+                            Saja</span> &amp; <br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-primary-600">Di
+                            Mana Saja</span>
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        Wartan hadir untuk mempermudah hidup kamu. Nikmati pengalaman pemesanan yang cepat, aman, dan
+                        tanpa ribet dalam satu genggaman.
+                    </p>
+
+                    <!-- Grup Tombol CTA -->
+                    <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
+                        <a href="#"
+                            class="inline-flex justify-center items-center bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-primary-600/30 transform hover:-translate-y-1">
+                            Pesan Sekarang
+                            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
+                                stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Statistik mini -->
+                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-slate-200/60 mt-8 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-3xl font-extrabold text-slate-900">10k<span class="text-primary-500">+</span>
+                            </p>
+                            <p class="text-sm text-slate-500 font-medium mt-1">Pengguna</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-slate-900">4.9<span class="text-yellow-400">★</span>
+                            </p>
+                            <p class="text-sm text-slate-500 font-medium mt-1">Rating</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-extrabold text-slate-900">24/7</p>
+                            <p class="text-sm text-slate-500 font-medium mt-1">Dukungan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bagian Gambar / Mockup (Kanan) -->
+                <div class="relative hidden lg:block h-full min-h-[600px] w-full mt-10 lg:mt-0 xl:pl-10">
+                    <!-- Background Card Dekorasi -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-tr from-primary-200 to-teal-100 rounded-[2.5rem] transform rotate-3 scale-95 shadow-inner">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-primary-600 rounded-[2.5rem] transform -rotate-2 scale-95 opacity-10">
+                    </div>
+
+                    <!-- Gambar Utama -->
+                    <div
+                        class="absolute inset-0 transform transition-transform duration-700 hover:scale-105 z-10 animate-float flex justify-center items-center p-4">
+                        <img src="https://images.unsplash.com/photo-1661956602116-aa6865609028?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Dashboard App"
+                            class="rounded-[2rem] shadow-2xl border-4 border-white object-cover w-full h-[500px]">
+                    </div>
+
+                    <!-- Floating Widget 1 -->
+                    <div class="absolute top-12 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 flex items-center gap-4 animate-float"
+                        style="animation-delay: 1s;">
+                        <div
+                            class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-bold uppercase tracking-wider">Pemesanan</p>
+                            <p class="font-bold text-slate-800">Berhasil Dikonfirmasi</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating Widget 2 -->
+                    <div class="absolute bottom-20 -right-8 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 z-20 flex items-center gap-4 animate-float"
+                        style="animation-delay: 2.5s;">
+                        <div class="flex -space-x-3">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/100?img=1" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/100?img=2" alt="User">
+                            <img class="w-10 h-10 rounded-full border-2 border-white"
+                                src="https://i.pravatar.cc/100?img=3" alt="User">
+                        </div>
+                        <div>
+                            <p class="font-bold text-slate-800 text-sm">Bergabunglah</p>
+                            <p class="text-xs text-slate-500">+10k member aktif</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <div class="text-center text-slate-400 py-10 border-2 border-dashed border-slate-300 rounded-xl">
+            Area Kerja Anggota 1 (Katalog Menu)
+        </div>
+    </section>
+
+    <div id="popup-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex justify-center items-center p-4">
+        <div class="bg-white p-8 rounded-xl w-full max-w-md text-center">
+            Area Kerja Anggota 2 (Form & Struk)
+        </div>
+    </div>
+
+    <script>
+        // Anggota 3: Buat logika klik tombol dan hitung total harga di bawah ini
+
+    </script>
+
+
+    <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
+
+        <!-- ✅ FOOTER -->
+        <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex items-center gap-2">
+                    <div
+                        class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                        W</div>
+                    <span class="font-bold text-xl text-slate-900">Wartan.</span>
+                </div>
+                <p class="text-slate-500 text-sm font-medium">© 2026 Aplikasi Pemesanan Wartan. Semua Hak Cipta
+                    Dilindungi.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                        <span class="sr-only">Facebook</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                        <span class="sr-only">Instagram</span>
+                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+</body>
+
+</html>
