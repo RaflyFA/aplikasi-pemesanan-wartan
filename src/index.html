@@ -323,11 +323,11 @@
                 <!-- Quantity Selector + Tombol -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button onclick="kurangiQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
                         <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button onclick="tambahQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
                     </div>
-                    <button onclick="tambahKeranjang(this, 'Nasi Goreng Spesial', 20000)"
+                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
                         class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -363,13 +363,14 @@
                     <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
                     <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
                 </div>
+                <!-- Quantity Selector + Tombol -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button onclick="kurangiQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
                         <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button onclick="tambahQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
                     </div>
-                    <button onclick="tambahKeranjang(this, 'Mie Ayam Bakso', 18000)"
+                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
                         class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -451,13 +452,14 @@
                     <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
                     <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
                 </div>
+                <!-- Quantity Selector + Tombol -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button onclick="kurangiQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
                         <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button onclick="tambahQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
                     </div>
-                    <button onclick="tambahKeranjang(this, 'Bakso Malang', 20000)"
+                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
                         class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -532,13 +534,14 @@
                     <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
                     <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
                 </div>
+                <!-- Quantity Selector + Tombol -->
                 <div class="flex items-center gap-3">
                     <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button onclick="kurangiQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
                         <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button onclick="tambahQty(this)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
                     </div>
-                    <button onclick="tambahKeranjang(this, 'Rendang Sapi', 30000)"
+                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
                         class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
@@ -561,20 +564,11 @@
 </section>
 
 
-    <div id="popup-modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-50 z-[60] flex justify-center items-center p-4">
-        <div class="bg-white p-8 rounded-xl w-full max-w-md text-center">
-            Area Kerja Anggota 2 (Form & Struk)
-        </div>
-    </div>
 
     <script>
         // Anggota 3: Buat logika klik tombol dan hitung total harga di bawah ini
 
     </script>
-
-
-    <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
 
         <!-- ✅ FOOTER -->
         <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
