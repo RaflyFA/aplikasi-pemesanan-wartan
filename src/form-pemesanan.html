@@ -3,15 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wartan - Pemesanan Makanan</title>
+    <title>Wartan - Form Pemesanan</title>
 
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- html2canvas untuk download struk -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -487,6 +484,134 @@
             stroke-linejoin: round;
         }
 
+        /* Order Summary Styles */
+        .order-summary {
+            background: linear-gradient(135deg, #f0fdf4, #f8fafc);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 2px solid #bbf7d0;
+        }
+
+        .summary-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #15803d;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .summary-title svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .summary-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .item-qty {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #16a34a;
+        }
+
+        .total-summary {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #bbf7d0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.125rem;
+        }
+
+        .total-label {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .total-amount {
+            font-weight: 800;
+            color: #16a34a;
+            font-size: 1.25rem;
+        }
+
+        /* Menu Info Card */
+        .menu-info-card {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .menu-info-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 0.75rem;
+            object-fit: cover;
+        }
+
+        .menu-info-details {
+            flex: 1;
+        }
+
+        .menu-info-name {
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.25rem;
+        }
+
+        .menu-info-price {
+            color: #16a34a;
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-info-qty {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .qty-badge {
+            background-color: #dcfce7;
+            color: #15803d;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+
         /* Struk Styles */
         .struk-area {
             background: linear-gradient(135deg, #f8fafc, white);
@@ -769,7 +894,7 @@
 
             <nav class="nav-menu">
                 <a href="index.html" class="nav-link">Beranda</a>
-                <a href="menu.html" class="nav-link">Menu</a>
+                <a href="menu.html" class="nav-link active">Menu</a>
             </nav>
 
             <div class="mobile-menu-btn">
@@ -792,15 +917,15 @@
                         <span class="pulse-ring"></span>
                         <span class="pulse-core"></span>
                     </span>
-                    Pemesanan Makanan & Minuman
+                    Lengkapi Data Pemesanan
                 </div>
-                <h1 class="page-title">Pesan <span class="gradient-text">Menu Favorit</span> Kamu</h1>
-                <p class="page-subtitle">Isi form di bawah untuk memesan makanan/minuman. Setelah selesai, struk digital akan muncul secara otomatis.</p>
+                <h1 class="page-title">Konfirmasi <span class="gradient-text">Pesanan Kamu</span></h1>
+                <p class="page-subtitle">Isi data diri untuk melanjutkan pemesanan menu yang telah dipilih.</p>
             </div>
 
             <!-- Grid 2 Kolom -->
             <div class="order-grid">
-                <!-- KOLOM KIRI: FORM PEMESANAN MAKANAN -->
+                <!-- KOLOM KIRI: FORM PEMESANAN -->
                 <div class="card">
                     <h2 class="card-title">
                         <span class="title-icon">
@@ -808,84 +933,71 @@
                                 <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
                         </span>
-                        Form Pemesanan
+                        Data Diri
                     </h2>
 
-                    <form id="orderForm">
+                    <!-- Ringkasan Pesanan -->
+                    <div class="order-summary">
+                        <div class="summary-title">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                            </svg>
+                            Ringkasan Pesanan
+                        </div>
+                        
+                        <div class="menu-info-card">
+                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Nasi Goreng" class="menu-info-image">
+                            <div class="menu-info-details">
+                                <div class="menu-info-name">Nasi Goreng Spesial</div>
+                                <div class="menu-info-price">Rp 20.000</div>
+                                <div class="menu-info-qty">
+                                    <span class="qty-badge">2 porsi</span>
+                                    <span>Level: Level 2</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-info-card">
+                            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Es Teh" class="menu-info-image">
+                            <div class="menu-info-details">
+                                <div class="menu-info-name">Es Teh Manis</div>
+                                <div class="menu-info-price">Rp 5.000</div>
+                                <div class="menu-info-qty">
+                                    <span class="qty-badge">1 porsi</span>
+                                    <span>Es: Reguler</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="total-summary">
+                            <span class="total-label">Total Pesanan:</span>
+                            <span class="total-amount">Rp 45.000</span>
+                        </div>
+                    </div>
+
+                    <form>
                         <!-- Nama Pelanggan -->
                         <div class="form-group">
                             <label class="form-label">Nama Lengkap <span class="required">*</span></label>
-                            <input type="text" id="nama" class="form-control" placeholder="Contoh: Andry Junyana" value="Andry Junyana" required>
+                            <input type="text" class="form-control" placeholder="Masukkan nama lengkap" required>
                         </div>
 
                         <!-- No HP -->
                         <div class="form-group">
-                            <label class="form-label">Nomor HP <span class="required">*</span></label>
-                            <input type="tel" id="noHp" class="form-control" placeholder="Contoh: 08987654321" value="08987654321" required>
+                            <label class="form-label">Nomor HP / WhatsApp <span class="required">*</span></label>
+                            <input type="tel" class="form-control" placeholder="081234567890" required>
                         </div>
 
+                        <!-- Alamat -->
                         <div class="form-group">
-                            <label class="form-label">Alamat <span class="required">*</span></label>
-                            <input type="text" id="alamat" class="form-control" placeholder="Contoh: Jl. Raya No. 123, Kota Tasikmalaya" required>
-                        </div>
-
-                        <!-- Pilih Kategori Makanan -->
-                        <div class="form-group">
-                            <label class="form-label">Kategori <span class="required">*</span></label>
-                            <select id="kategori" class="form-control" required>
-                                <option value="" disabled>-- Pilih Kategori --</option>
-                                <option value="Makanan" selected>Makanan</option>
-                                <option value="Minuman">Minuman</option>
-                                <option value="Cemilan">Cemilan</option>
-                            </select>
-                        </div>
-
-                        <!-- Pilih Menu (akan diisi berdasarkan kategori) -->
-                        <div class="form-group">
-                            <label class="form-label">Pilih Menu <span class="required">*</span></label>
-                            <select id="menu" class="form-control" required>
-                                <option value="" disabled selected>-- Pilih Menu --</option>
-                                <!-- Makanan -->
-                                <option value="Nasi Goreng" data-harga="25000" data-kategori="Makanan">Nasi Goreng - Rp 25.000</option>
-                                <option value="Mie Goreng" data-harga="23000" data-kategori="Makanan">Mie Goreng - Rp 23.000</option>
-                                <option value="Ayam Bakar" data-harga="35000" data-kategori="Makanan">Ayam Bakar - Rp 35.000</option>
-                                <option value="Sate Ayam" data-harga="30000" data-kategori="Makanan">Sate Ayam (10 tusuk) - Rp 30.000</option>
-                                <option value="Gado-gado" data-harga="28000" data-kategori="Makanan">Gado-gado - Rp 28.000</option>
-                                <!-- Minuman -->
-                                <option value="Es Teh" data-harga="5000" data-kategori="Minuman">Es Teh - Rp 5.000</option>
-                                <option value="Es Jeruk" data-harga="7000" data-kategori="Minuman">Es Jeruk - Rp 7.000</option>
-                                <option value="Kopi Susu" data-harga="15000" data-kategori="Minuman">Kopi Susu - Rp 15.000</option>
-                                <option value="Jus Alpukat" data-harga="18000" data-kategori="Minuman">Jus Alpukat - Rp 18.000</option>
-                                <option value="Air Mineral" data-harga="3000" data-kategori="Minuman">Air Mineral - Rp 3.000</option>
-                                <!-- Cemilan -->
-                                <option value="Kentang Goreng" data-harga="15000" data-kategori="Cemilan">Kentang Goreng - Rp 15.000</option>
-                                <option value="Pisang Goreng" data-harga="12000" data-kategori="Cemilan">Pisang Goreng (5 pcs) - Rp 12.000</option>
-                                <option value="Lumpia" data-harga="18000" data-kategori="Cemilan">Lumpia - Rp 18.000</option>
-                                <option value="Dimsum" data-harga="22000" data-kategori="Cemilan">Dimsum (10 pcs) - Rp 22.000</option>
-                            </select>
-                        </div>
-
-                        <!-- Jumlah -->
-                        <div class="form-group">
-                            <label class="form-label">Jumlah Porsi <span class="required">*</span></label>
-                            <input type="number" id="jumlah" min="1" value="1" class="form-control" required>
-                        </div>
-
-                        <!-- Level Pedas (opsional, untuk makanan) -->
-                        <div class="form-group" id="levelPedasGroup">
-                            <label class="form-label">Level Pedas (Opsional)</label>
-                            <select id="levelPedas" class="form-control">
-                                <option value="">Tidak Pedas</option>
-                                <option value="Level 1">Level 1 (Sedang)</option>
-                                <option value="Level 2">Level 2 (Pedes)</option>
-                                <option value="Level 3">Level 3 (Extra Pedes)</option>
-                            </select>
+                            <label class="form-label">Alamat Lengkap <span class="required">*</span></label>
+                            <textarea class="form-control" placeholder="Masukkan alamat lengkap untuk pengiriman" required></textarea>
                         </div>
 
                         <!-- Catatan Tambahan -->
                         <div class="form-group">
-                            <label class="form-label">Catatan (Opsional)</label>
-                            <textarea id="catatan" class="form-control" placeholder="Contoh: Nasi gorengnya jangan terlalu pedas, pake telur tambahan..."></textarea>
+                            <label class="form-label">Catatan Tambahan (Opsional)</label>
+                            <textarea class="form-control" placeholder="Contoh: Tolong pisahkan sambalnya, diantar sebelum jam 5 sore..."></textarea>
                         </div>
 
                         <!-- Tombol Submit -->
@@ -911,8 +1023,8 @@
 
                     <!-- Area Struk (yang akan di-download) -->
                     <div class="struk-area" id="digitalStruk">
-                        <!-- Empty State -->
-                        <div id="emptyStrukMessage" class="empty-struk">
+                        <!-- Empty State (hidden karena ada struk contoh) -->
+                        <div id="emptyStrukMessage" class="empty-struk" style="display: none;">
                             <svg viewBox="0 0 24 24">
                                 <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
@@ -920,60 +1032,66 @@
                             <p style="font-size: 0.875rem; margin-top: 0.25rem;">Isi form di samping untuk melihat struk</p>
                         </div>
 
-                        <!-- Struk Content (hidden by default) -->
-                        <div id="strukContent" class="struk-content">
+                        <!-- Struk Content (aktif) -->
+                        <div id="strukContent" class="struk-content active">
                             <div class="struk-header">
                                 <div class="struk-logo">W</div>
                                 <h3 class="struk-title">WARTAN</h3>
                                 <p class="struk-subtitle">Warung Makan & Minuman</p>
-                                <p class="struk-number">Struk #<span id="strukNo">WRT-2026-001</span></p>
+                                <p class="struk-number">Struk #WRT-2026-042</p>
                             </div>
 
                             <div class="struk-info">
                                 <div class="info-row">
                                     <span class="info-label">Nama:</span>
-                                    <span class="info-value" id="strukNama">-</span>
+                                    <span class="info-value">Ahmad Rizki</span>
                                 </div>
                                 <div class="info-row">
                                     <span class="info-label">No. HP:</span>
-                                    <span class="info-value" id="strukNoHp">-</span>
+                                    <span class="info-value">081234567890</span>
+                                </div>
+                                <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 4px; border-bottom: 1px #e2e8f0; padding-bottom: 8px; margin-bottom: 8px;">
+                                    <span class="info-label">Alamat Lengkap:</span>
+                                    <span class="info-value" style="font-size: 0.85rem; word-wrap: break-word; background-color: #f8fafc; padding: 8px; border-radius: 8px; width: 100%;">
+                                        Jl. Sudirman No. 123, Jakarta Selatan
+                                    </span>
                                 </div>
                                 <div class="info-row">
                                     <span class="info-label">Tanggal:</span>
-                                    <span class="info-value" id="strukTanggal">-</span>
+                                    <span class="info-value">3 Maret 2026 14:30</span>
                                 </div>
                             </div>
 
                             <div class="struk-detail">
                                 <div class="detail-row">
-                                    <span class="detail-label">Kategori:</span>
-                                    <span class="detail-value" id="strukKategori">-</span>
+                                    <span class="detail-label">Menu 1:</span>
+                                    <span class="detail-value">Nasi Goreng Spesial (2x)</span>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Menu:</span>
-                                    <span class="detail-value" id="strukMenu">-</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Harga Satuan:</span>
-                                    <span class="detail-value" id="strukHarga">-</span>
-                                </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Jumlah:</span>
-                                    <span class="detail-value" id="strukJumlah">-</span>
-                                </div>
-                                <div class="detail-row" id="levelPedasRow">
+                                <div class="detail-row" style="padding-left: 1rem;">
                                     <span class="detail-label">Level Pedas:</span>
-                                    <span class="detail-value" id="strukLevelPedas">-</span>
+                                    <span class="detail-value">Level 2</span>
                                 </div>
                                 <div class="detail-row">
+                                    <span class="detail-label">Menu 2:</span>
+                                    <span class="detail-value">Es Teh Manis (1x)</span>
+                                </div>
+                                <div class="detail-row" style="padding-left: 1rem;">
                                     <span class="detail-label">Catatan:</span>
-                                    <span class="detail-value italic" id="strukCatatan">-</span>
+                                    <span class="detail-value italic">Es batu dipisah</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Subtotal:</span>
+                                    <span class="detail-value">Rp 45.000</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Biaya Kirim:</span>
+                                    <span class="detail-value">Rp 5.000</span>
                                 </div>
                             </div>
 
                             <div class="total-row">
                                 <span class="total-label">TOTAL:</span>
-                                <span class="total-value" id="strukTotal">Rp 0</span>
+                                <span class="total-value">Rp 50.000</span>
                             </div>
 
                             <div class="struk-footer">
@@ -983,8 +1101,8 @@
                         </div>
                     </div>
 
-                    <!-- Tombol Download Struk (di dalam card, ukuran normal) -->
-                    <button id="downloadStrukBtn" class="btn-download" disabled>
+                    <!-- Tombol Download Struk -->
+                    <button id="downloadStrukBtn" class="btn-download active">
                         <svg viewBox="0 0 24 24">
                             <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
@@ -1017,152 +1135,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-        // Fungsi format Rupiah
-        function formatRupiah(angka) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
-        }
-
-        // Generate nomor struk
-        function generateStrukNo() {
-            return 'WRT-' + new Date().getFullYear() + '-' + Math.floor(Math.random() * 1000).toString().padStart(3, '0');
-        }
-
-        // Filter menu berdasarkan kategori
-        const kategoriSelect = document.getElementById('kategori');
-        const menuSelect = document.getElementById('menu');
-        const levelPedasGroup = document.getElementById('levelPedasGroup');
-        const menuOptions = menuSelect.innerHTML;
-
-        kategoriSelect.addEventListener('change', function() {
-            const selectedKategori = this.value;
-            
-            // Reset menu select
-            menuSelect.innerHTML = '<option value="" disabled selected>-- Pilih Menu --</option>';
-            
-            // Filter option berdasarkan kategori
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = menuOptions;
-            const allOptions = tempDiv.querySelectorAll('option');
-            
-            allOptions.forEach(option => {
-                if (option.value && option.getAttribute('data-kategori') === selectedKategori) {
-                    menuSelect.appendChild(option.cloneNode(true));
-                }
-            });
-
-            // Show/hide level pedas (hanya untuk kategori Makanan)
-            if (selectedKategori === 'Makanan') {
-                levelPedasGroup.style.display = 'block';
-            } else {
-                levelPedasGroup.style.display = 'none';
-                document.getElementById('levelPedas').value = '';
-            }
-        });
-
-        // Trigger change untuk set initial
-        setTimeout(() => {
-            kategoriSelect.dispatchEvent(new Event('change'));
-        }, 100);
-
-        // Ambil elemen DOM
-        const orderForm = document.getElementById('orderForm');
-        const emptyStrukMessage = document.getElementById('emptyStrukMessage');
-        const strukContent = document.getElementById('strukContent');
-        const downloadBtn = document.getElementById('downloadStrukBtn');
-
-        const strukNama = document.getElementById('strukNama');
-        const strukNoHp = document.getElementById('strukNoHp');
-        const strukTanggal = document.getElementById('strukTanggal');
-        const strukKategori = document.getElementById('strukKategori');
-        const strukMenu = document.getElementById('strukMenu');
-        const strukHarga = document.getElementById('strukHarga');
-        const strukJumlah = document.getElementById('strukJumlah');
-        const strukLevelPedas = document.getElementById('strukLevelPedas');
-        const strukCatatan = document.getElementById('strukCatatan');
-        const strukTotal = document.getElementById('strukTotal');
-        const strukNo = document.getElementById('strukNo');
-        const levelPedasRow = document.getElementById('levelPedasRow');
-
-        // Handler submit
-        orderForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const nama = document.getElementById('nama').value.trim();
-            const noHp = document.getElementById('noHp').value.trim();
-            const kategori = document.getElementById('kategori').value;
-            const menuSelect = document.getElementById('menu');
-            const menu = menuSelect.options[menuSelect.selectedIndex]?.text || '-';
-            const harga = parseInt(menuSelect.options[menuSelect.selectedIndex]?.getAttribute('data-harga') || 0);
-            const jumlah = parseInt(document.getElementById('jumlah').value) || 1;
-            const levelPedas = document.getElementById('levelPedas').value;
-            const catatan = document.getElementById('catatan').value.trim() || '-';
-            
-            if (!nama || !noHp || !kategori || !menuSelect.value) {
-                alert('Harap isi semua field yang wajib diisi!');
-                return;
-            }
-
-            const total = harga * jumlah;
-
-            const today = new Date();
-            const formattedDate = today.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) + ' ' + 
-                                 today.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
-
-            // Isi struk
-            strukNama.textContent = nama;
-            strukNoHp.textContent = noHp;
-            strukTanggal.textContent = formattedDate;
-            strukKategori.textContent = kategori;
-            strukMenu.textContent = menu.split(' - ')[0];
-            strukHarga.textContent = formatRupiah(harga);
-            strukJumlah.textContent = jumlah;
-            
-            if (levelPedas && kategori === 'Makanan') {
-                strukLevelPedas.textContent = levelPedas;
-                levelPedasRow.style.display = 'flex';
-            } else {
-                levelPedasRow.style.display = 'none';
-            }
-            
-            strukCatatan.textContent = catatan;
-            strukTotal.textContent = formatRupiah(total);
-            strukNo.textContent = generateStrukNo();
-
-            // Tampilkan struk, sembunyikan empty message
-            emptyStrukMessage.style.display = 'none';
-            strukContent.classList.add('active');
-
-            // Aktifkan tombol download
-            downloadBtn.disabled = false;
-            downloadBtn.classList.add('active');
-        });
-
-        // Download struk (hanya struk yang di-download)
-        downloadBtn.addEventListener('click', function() {
-            if (downloadBtn.disabled) return;
-
-            const strukElement = document.getElementById('digitalStruk');
-            
-            // Gunakan html2canvas untuk mengambil screenshot struk saja
-            html2canvas(strukElement, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                logging: false,
-                allowTaint: false,
-                useCORS: true
-            }).then(canvas => {
-                // Buat link download
-                const link = document.createElement('a');
-                link.download = `struk-wartan-${strukNo.textContent}.png`;
-                link.href = canvas.toDataURL('image/png');
-                link.click();
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('Gagal mendownload struk. Silakan coba lagi.');
-            });
-        });
-    </script>
 </body>
 </html>
