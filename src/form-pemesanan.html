@@ -10,926 +10,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* ===== BACKGROUND ORNAMENTS ===== */
-        .bg-ornament {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .blob {
-            position: absolute;
-            border-radius: 50%;
-            mix-blend-mode: multiply;
-            filter: blur(80px);
-            opacity: 0.7;
-            animation: blob 7s infinite;
-        }
-
-        .blob-1 {
-            top: -10%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background-color: rgba(134, 239, 172, 0.3);
-        }
-
-        .blob-2 {
-            top: 20%;
-            right: -5%;
-            width: 400px;
-            height: 400px;
-            background-color: rgba(94, 234, 212, 0.3);
-            animation-delay: 2s;
-        }
-
-        .blob-3 {
-            bottom: -20%;
-            left: 20%;
-            width: 600px;
-            height: 600px;
-            background-color: rgba(187, 247, 208, 0.3);
-            animation-delay: 4s;
-        }
-
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-
-        /* ===== NAVBAR ===== */
-        .navbar {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 50;
-            transition: all 0.3s;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            height: 80px;
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media (min-width: 640px) {
-            .nav-container {
-                padding: 0 1.5rem;
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'ping-slow': 'ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
             }
         }
+    </script>
 
-        @media (min-width: 1024px) {
-            .nav-container {
-                padding: 0 2rem;
-            }
-        }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #22c55e, #15803d);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.4);
-            transition: transform 0.3s;
-        }
-
-        .logo:hover .logo-icon {
-            transform: rotate(12deg);
-        }
-
-        .logo-text {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.025em;
-            color: #0f172a;
-        }
-
-        .logo-dot {
-            color: #16a34a;
-            font-size: 1.875rem;
-            line-height: 1;
-        }
-
-        .nav-menu {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .nav-menu {
-                display: flex;
-                gap: 2.5rem;
-                align-items: center;
-            }
-        }
-
-        .nav-link {
-            color: #475569;
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s;
-            position: relative;
-        }
-
-        .nav-link:hover {
-            color: #16a34a;
-        }
-
-        .nav-link.active {
-            color: #16a34a;
-            font-weight: 600;
-        }
-
-        .nav-link.active::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #16a34a;
-            border-radius: 9999px;
-        }
-
-        .mobile-menu-btn {
-            display: flex;
-            align-items: center;
-        }
-
-        @media (min-width: 768px) {
-            .mobile-menu-btn {
-                display: none;
-            }
-        }
-
-        .mobile-btn {
-            color: #475569;
-            background-color: #f1f5f9;
-            border: none;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            cursor: pointer;
-        }
-
-        .mobile-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* ===== MAIN CONTENT ===== */
-        .main-content {
-            flex-grow: 1;
-            padding-top: 112px;
-            padding-bottom: 4rem;
-            position: relative;
-            z-index: 10;
-        }
-
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .container {
-                padding: 0 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding: 0 2rem;
-            }
-        }
-
-        /* Page Header */
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background-color: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            border-radius: 9999px;
-            color: #15803d;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-        }
-
-        .pulse-dot {
-            position: relative;
-            display: flex;
-            height: 12px;
-            width: 12px;
-        }
-
-        .pulse-ring {
-            position: absolute;
-            display: inline-flex;
-            height: 100%;
-            width: 100%;
-            border-radius: 9999px;
-            background-color: #4ade80;
-            opacity: 0.75;
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-        }
-
-        .pulse-core {
-            position: relative;
-            display: inline-flex;
-            border-radius: 9999px;
-            height: 12px;
-            width: 12px;
-            background-color: #22c55e;
-        }
-
-        @keyframes ping {
-            75%, 100% {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
-        .page-title {
-            font-size: 2.25rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .page-title {
-                font-size: 3rem;
-            }
-        }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #16a34a, #14b8a6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .page-subtitle {
-            font-size: 1.125rem;
-            color: #475569;
-            max-width: 42rem;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Grid Layout */
-        .order-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            align-items: start;
-        }
-
-        @media (min-width: 1024px) {
-            .order-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Card Style */
-        .card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            border-radius: 1.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            padding: 1.5rem;
-            border: 1px solid rgba(226, 232, 240, 0.6);
-        }
-
-        @media (min-width: 768px) {
-            .card {
-                padding: 2rem;
-            }
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .title-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 9999px;
-            background-color: #dcfce7;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #16a34a;
-        }
-
-        .title-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* Form Styles */
-        .form-group {
-            margin-bottom: 1.25rem;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #334155;
-            margin-bottom: 0.25rem;
-        }
-
-        .required {
-            color: #ef4444;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 0.75rem;
-            border: 1px solid #e2e8f0;
-            background-color: rgba(248, 250, 252, 0.5);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: all 0.2s;
-            outline: none;
-        }
-
-        .form-control:focus {
-            border-color: #4ade80;
-            box-shadow: 0 0 0 2px #bbf7d0;
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        /* Hide spinner for number input */
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-
-        .btn-primary {
-            width: 100%;
-            background-color: #16a34a;
-            color: white;
-            border: none;
-            padding: 1rem 1.5rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            font-size: 1.125rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary:hover {
-            background-color: #15803d;
-            transform: translateY(-2px);
-        }
-
-        .btn-primary svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* Order Summary Styles */
-        .order-summary {
-            background: linear-gradient(135deg, #f0fdf4, #f8fafc);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border: 2px solid #bbf7d0;
-        }
-
-        .summary-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #15803d;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .summary-title svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .summary-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.75rem 0;
-            border-bottom: 1px dashed #e2e8f0;
-        }
-
-        .summary-item:last-child {
-            border-bottom: none;
-        }
-
-        .item-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .item-name {
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .item-qty {
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-
-        .item-price {
-            font-weight: 700;
-            color: #16a34a;
-        }
-
-        .total-summary {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 2px solid #bbf7d0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.125rem;
-        }
-
-        .total-label {
-            font-weight: 600;
-            color: #334155;
-        }
-
-        .total-amount {
-            font-weight: 800;
-            color: #16a34a;
-            font-size: 1.25rem;
-        }
-
-        /* Menu Info Card */
-        .menu-info-card {
-            background-color: white;
-            border-radius: 1rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .menu-info-image {
-            width: 80px;
-            height: 80px;
-            border-radius: 0.75rem;
-            object-fit: cover;
-        }
-
-        .menu-info-details {
-            flex: 1;
-        }
-
-        .menu-info-name {
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 0.25rem;
-        }
-
-        .menu-info-price {
-            color: #16a34a;
-            font-weight: 600;
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .menu-info-qty {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: #64748b;
-            font-size: 0.875rem;
-        }
-
-        .qty-badge {
-            background-color: #dcfce7;
-            color: #15803d;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-weight: 600;
-        }
-
-        /* Struk Styles */
-        .struk-area {
-            background: linear-gradient(135deg, #f8fafc, white);
-            border-radius: 1rem;
-            padding: 1.5rem;
-            border: 2px dashed #bbf7d0;
-            margin-bottom: 1.5rem;
-        }
-
-        .empty-struk {
-            text-align: center;
-            color: #94a3b8;
-            padding: 2rem 0;
-        }
-
-        .empty-struk svg {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 0.75rem;
-            color: #cbd5e1;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 1.5;
-        }
-
-        .struk-content {
-            display: none;
-        }
-
-        .struk-content.active {
-            display: block;
-        }
-
-        .struk-header {
-            text-align: center;
-            border-bottom: 2px dashed #e2e8f0;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .struk-logo {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #22c55e, #15803d);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.25rem;
-            margin: 0 auto 0.5rem;
-        }
-
-        .struk-title {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: #1e293b;
-        }
-
-        .struk-subtitle {
-            font-size: 0.75rem;
-            color: #64748b;
-        }
-
-        .struk-number {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 0.25rem;
-        }
-
-        .struk-info {
-            border-bottom: 2px dashed #e2e8f0;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .info-label {
-            color: #64748b;
-        }
-
-        .info-value {
-            font-weight: 500;
-            color: #1e293b;
-        }
-
-        .struk-detail {
-            border-bottom: 2px dashed #e2e8f0;
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .detail-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.875rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .detail-label {
-            color: #64748b;
-        }
-
-        .detail-value {
-            font-weight: 500;
-            color: #1e293b;
-        }
-
-        .detail-value.italic {
-            font-style: italic;
-        }
-
-        .total-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.5rem;
-        }
-
-        .total-label {
-            font-weight: 700;
-            color: #334155;
-        }
-
-        .total-value {
-            font-weight: 800;
-            font-size: 1.25rem;
-            color: #16a34a;
-        }
-
-        .struk-footer {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #94a3b8;
-            border-top: 2px dashed #e2e8f0;
-            padding-top: 1rem;
-            margin-top: 0.5rem;
-        }
-
-        .btn-download {
-            width: 100%;
-            background-color: #f1f5f9;
-            color: #94a3b8;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.75rem;
-            font-weight: 600;
-            cursor: not-allowed;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-            font-size: 1rem;
-        }
-
-        .btn-download.active {
-            background-color: #16a34a;
-            color: white;
-            box-shadow: 0 10px 15px -3px rgba(22, 163, 74, 0.3);
-            cursor: pointer;
-        }
-
-        .btn-download.active:hover {
-            background-color: #15803d;
-            transform: translateY(-2px);
-        }
-
-        .btn-download svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background-color: white;
-            border-top: 1px solid #e2e8f0;
-            margin-top: auto;
-            width: 100%;
-            z-index: 10;
-            position: relative;
-        }
-
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-container {
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .footer-logo-icon {
-            width: 32px;
-            height: 32px;
-            background-color: #16a34a;
-            border-radius: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.125rem;
-        }
-
-        .footer-logo-text {
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: #0f172a;
-        }
-
-        .footer-copyright {
-            color: #64748b;
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-link {
-            color: #94a3b8;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .social-link:hover {
-            color: #16a34a;
-        }
-
-        .social-link svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-    </style>
 </head>
-<body>
+<body class="font-['Poppins'] bg-slate-50 text-slate-800 min-h-screen flex flex-col overflow-x-hidden relative">
+
     <!-- Background Ornaments -->
-    <div class="bg-ornament">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+    <div class="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob"></div>
+        <div class="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-teal-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-primary-200/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-4000"></div>
     </div>
 
     <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">W</div>
-                <span class="logo-text">Wartan<span class="logo-dot">.</span></span>
-            </a>
+    <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/30 shadow-sm h-20 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-primary-500/40 group-hover:rotate-12 transition-transform duration-300">
+                        W
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Wartan<span class="text-primary-600 text-3xl leading-none">.</span></span>
+                </a>
 
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link">Beranda</a>
-                <a href="menu.html" class="nav-link active">Menu</a>
-            </nav>
+                <nav class="hidden md:flex gap-10 items-center">
+                    <a href="index.html" class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</a>
+                    <a href="menu.html" class="text-primary-600 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary-600 after:rounded-full">Menu</a>
+                </nav>
 
-            <div class="mobile-menu-btn">
-                <button class="mobile-btn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <div class="md:hidden flex items-center">
+                    <button class="text-slate-600 hover:text-slate-900 p-2 bg-slate-100 rounded-lg">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main-content">
-        <div class="container">
+    <main class="flex-grow pt-28 pb-16 z-10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Page Header -->
-            <div class="page-header">
-                <div class="badge">
-                    <span class="pulse-dot">
-                        <span class="pulse-ring"></span>
-                        <span class="pulse-core"></span>
+            <div class="text-center mb-12">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mb-4">
+                    <span class="relative flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
                     </span>
                     Lengkapi Data Pemesanan
                 </div>
-                <h1 class="page-title">Konfirmasi <span class="gradient-text">Pesanan Kamu</span></h1>
-                <p class="page-subtitle">Isi data diri untuk melanjutkan pemesanan menu yang telah dipilih.</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
+                    Konfirmasi <span class="bg-gradient-to-r from-primary-600 to-teal-500 bg-clip-text text-transparent">Pesanan Kamu</span>
+                </h1>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Isi data diri untuk melanjutkan pemesanan menu yang telah dipilih.</p>
             </div>
 
             <!-- Grid 2 Kolom -->
-            <div class="order-grid">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <!-- KOLOM KIRI: FORM PEMESANAN -->
-                <div class="card">
-                    <h2 class="card-title">
-                        <span class="title-icon">
-                            <svg viewBox="0 0 24 24">
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200/60">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <span class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                             </svg>
                         </span>
@@ -937,72 +122,72 @@
                     </h2>
 
                     <!-- Ringkasan Pesanan -->
-                    <div class="order-summary">
-                        <div class="summary-title">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                    <div class="bg-gradient-to-br from-primary-50 to-slate-50 rounded-xl p-6 mb-8 border-2 border-primary-200">
+                        <div class="flex items-center gap-2 text-primary-700 font-semibold mb-4">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
                             </svg>
                             Ringkasan Pesanan
                         </div>
                         
-                        <div class="menu-info-card">
-                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Nasi Goreng" class="menu-info-image">
-                            <div class="menu-info-details">
-                                <div class="menu-info-name">Nasi Goreng Spesial</div>
-                                <div class="menu-info-price">Rp 20.000</div>
-                                <div class="menu-info-qty">
-                                    <span class="qty-badge">2 porsi</span>
+                        <div class="bg-white rounded-xl p-4 mb-3 border border-slate-200 flex gap-4">
+                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Nasi Goreng" class="w-20 h-20 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <div class="font-bold text-slate-800">Nasi Goreng Spesial</div>
+                                <div class="text-primary-600 font-semibold text-lg">Rp 20.000</div>
+                                <div class="flex items-center gap-2 text-sm text-slate-500 mt-1">
+                                    <span class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">2 porsi</span>
                                     <span>Level: Level 2</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="menu-info-card">
-                            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Es Teh" class="menu-info-image">
-                            <div class="menu-info-details">
-                                <div class="menu-info-name">Es Teh Manis</div>
-                                <div class="menu-info-price">Rp 5.000</div>
-                                <div class="menu-info-qty">
-                                    <span class="qty-badge">1 porsi</span>
+                        <div class="bg-white rounded-xl p-4 mb-3 border border-slate-200 flex gap-4">
+                            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Es Teh" class="w-20 h-20 rounded-lg object-cover">
+                            <div class="flex-1">
+                                <div class="font-bold text-slate-800">Es Teh Manis</div>
+                                <div class="text-primary-600 font-semibold text-lg">Rp 5.000</div>
+                                <div class="flex items-center gap-2 text-sm text-slate-500 mt-1">
+                                    <span class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">1 porsi</span>
                                     <span>Es: Reguler</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="total-summary">
-                            <span class="total-label">Total Pesanan:</span>
-                            <span class="total-amount">Rp 45.000</span>
+                        <div class="mt-4 pt-4 border-t-2 border-primary-200 flex justify-between items-center">
+                            <span class="font-semibold text-slate-600">Total Pesanan:</span>
+                            <span class="font-extrabold text-primary-600 text-xl">Rp 45.000</span>
                         </div>
                     </div>
 
-                    <form>
+                    <form class="space-y-5">
                         <!-- Nama Pelanggan -->
-                        <div class="form-group">
-                            <label class="form-label">Nama Lengkap <span class="required">*</span></label>
-                            <input type="text" class="form-control" placeholder="Masukkan nama lengkap" required>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-600 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Masukkan nama lengkap" required>
                         </div>
 
                         <!-- No HP -->
-                        <div class="form-group">
-                            <label class="form-label">Nomor HP / WhatsApp <span class="required">*</span></label>
-                            <input type="tel" class="form-control" placeholder="081234567890" required>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-600 mb-1">Nomor HP / WhatsApp <span class="text-red-500">*</span></label>
+                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="081234567890" required>
                         </div>
 
                         <!-- Alamat -->
-                        <div class="form-group">
-                            <label class="form-label">Alamat Lengkap <span class="required">*</span></label>
-                            <textarea class="form-control" placeholder="Masukkan alamat lengkap untuk pengiriman" required></textarea>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-600 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
+                            <textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Masukkan alamat lengkap untuk pengiriman" rows="3" required></textarea>
                         </div>
 
                         <!-- Catatan Tambahan -->
-                        <div class="form-group">
-                            <label class="form-label">Catatan Tambahan (Opsional)</label>
-                            <textarea class="form-control" placeholder="Contoh: Tolong pisahkan sambalnya, diantar sebelum jam 5 sore..."></textarea>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-600 mb-1">Catatan Tambahan (Opsional)</label>
+                            <textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Contoh: Tolong pisahkan sambalnya, diantar sebelum jam 5 sore..." rows="3"></textarea>
                         </div>
 
                         <!-- Tombol Submit -->
-                        <button type="submit" class="btn-primary">
-                            <svg viewBox="0 0 24 24">
+                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-6 rounded-xl text-lg transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 13l4 4L19 7"></path>
                             </svg>
                             Buat Pesanan
@@ -1011,99 +196,88 @@
                 </div>
 
                 <!-- KOLOM KANAN: STRUK DIGITAL -->
-                <div class="card">
-                    <h2 class="card-title">
-                        <span class="title-icon">
-                            <svg viewBox="0 0 24 24">
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200/60">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <span class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                             </svg>
                         </span>
                         Struk Digital
                     </h2>
 
-                    <!-- Area Struk (yang akan di-download) -->
-                    <div class="struk-area" id="digitalStruk">
-                        <!-- Empty State (hidden karena ada struk contoh) -->
-                        <div id="emptyStrukMessage" class="empty-struk" style="display: none;">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                            </svg>
-                            <p>Belum ada pesanan</p>
-                            <p style="font-size: 0.875rem; margin-top: 0.25rem;">Isi form di samping untuk melihat struk</p>
-                        </div>
-
-                        <!-- Struk Content (aktif) -->
-                        <div id="strukContent" class="struk-content active">
-                            <div class="struk-header">
-                                <div class="struk-logo">W</div>
-                                <h3 class="struk-title">WARTAN</h3>
-                                <p class="struk-subtitle">Warung Makan & Minuman</p>
-                                <p class="struk-number">Struk #WRT-2026-042</p>
+                    <!-- Area Struk -->
+                    <div class="bg-gradient-to-br from-slate-50 to-white rounded-xl p-6 border-2 border-dashed border-primary-200 mb-6">
+                        <!-- Struk Content -->
+                        <div>
+                            <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-2">W</div>
+                                <h3 class="font-bold text-xl text-slate-800">WARTAN</h3>
+                                <p class="text-xs text-slate-500">Warung Makan & Minuman</p>
+                                <p class="text-xs text-slate-400 mt-1">Struk #WRT-2026-042</p>
                             </div>
 
-                            <div class="struk-info">
-                                <div class="info-row">
-                                    <span class="info-label">Nama:</span>
-                                    <span class="info-value">Ahmad Rizki</span>
+                            <div class="border-b-2 border-dashed border-slate-200 pb-4 mb-4 space-y-1">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Nama:</span>
+                                    <span class="font-medium text-slate-700">Ahmad Rizki</span>
                                 </div>
-                                <div class="info-row">
-                                    <span class="info-label">No. HP:</span>
-                                    <span class="info-value">081234567890</span>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">No. HP:</span>
+                                    <span class="font-medium text-slate-700">081234567890</span>
                                 </div>
-                                <div class="info-row" style="flex-direction: column; align-items: flex-start; gap: 4px; border-bottom: 1px #e2e8f0; padding-bottom: 8px; margin-bottom: 8px;">
-                                    <span class="info-label">Alamat Lengkap:</span>
-                                    <span class="info-value" style="font-size: 0.85rem; word-wrap: break-word; background-color: #f8fafc; padding: 8px; border-radius: 8px; width: 100%;">
-                                        Jl. Sudirman No. 123, Jakarta Selatan
-                                    </span>
+                                <div class="mt-2">
+                                    <span class="text-sm text-slate-500 block mb-1">Alamat Lengkap:</span>
+                                    <span class="text-sm font-medium text-slate-700 block bg-slate-100 p-2 rounded-lg">Jl. Sudirman No. 123, Jakarta Selatan</span>
                                 </div>
-                                <div class="info-row">
-                                    <span class="info-label">Tanggal:</span>
-                                    <span class="info-value">3 Maret 2026 14:30</span>
+                                <div class="flex justify-between text-sm mt-2">
+                                    <span class="text-slate-500">Tanggal:</span>
+                                    <span class="font-medium text-slate-700">3 Maret 2026 14:30</span>
                                 </div>
                             </div>
 
-                            <div class="struk-detail">
-                                <div class="detail-row">
-                                    <span class="detail-label">Menu 1:</span>
-                                    <span class="detail-value">Nasi Goreng Spesial (2x)</span>
+                            <div class="border-b-2 border-dashed border-slate-200 pb-4 mb-4 space-y-1">
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Menu 1:</span>
+                                    <span class="font-medium text-slate-700">Nasi Goreng Spesial (2x)</span>
                                 </div>
-                                <div class="detail-row" style="padding-left: 1rem;">
-                                    <span class="detail-label">Level Pedas:</span>
-                                    <span class="detail-value">Level 2</span>
+                                <div class="flex justify-between text-sm pl-4">
+                                    <span class="text-slate-500">Level Pedas:</span>
+                                    <span class="font-medium text-slate-700">Level 2</span>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Menu 2:</span>
-                                    <span class="detail-value">Es Teh Manis (1x)</span>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Menu 2:</span>
+                                    <span class="font-medium text-slate-700">Es Teh Manis (1x)</span>
                                 </div>
-                                <div class="detail-row" style="padding-left: 1rem;">
-                                    <span class="detail-label">Catatan:</span>
-                                    <span class="detail-value italic">Es batu dipisah</span>
+                                <div class="flex justify-between text-sm pl-4">
+                                    <span class="text-slate-500">Catatan:</span>
+                                    <span class="font-medium text-slate-700 italic">Es batu dipisah</span>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Subtotal:</span>
-                                    <span class="detail-value">Rp 45.000</span>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Subtotal:</span>
+                                    <span class="font-medium text-slate-700">Rp 45.000</span>
                                 </div>
-                                <div class="detail-row">
-                                    <span class="detail-label">Biaya Kirim:</span>
-                                    <span class="detail-value">Rp 5.000</span>
+                                <div class="flex justify-between text-sm">
+                                    <span class="text-slate-500">Biaya Kirim:</span>
+                                    <span class="font-medium text-slate-700">Rp 5.000</span>
                                 </div>
                             </div>
 
-                            <div class="total-row">
-                                <span class="total-label">TOTAL:</span>
-                                <span class="total-value">Rp 50.000</span>
+                            <div class="flex justify-between items-center mb-2">
+                                <span class="font-bold text-slate-600">TOTAL:</span>
+                                <span class="font-extrabold text-primary-600 text-xl">Rp 50.000</span>
                             </div>
 
-                            <div class="struk-footer">
+                            <div class="text-center text-xs text-slate-400 border-t-2 border-dashed border-slate-200 pt-4 mt-2">
                                 <p>Terima kasih telah memesan di Wartan!</p>
-                                <p style="margin-top: 0.25rem;">*Struk ini merupakan bukti pemesanan digital</p>
+                                <p class="mt-1">*Struk ini merupakan bukti pemesanan digital</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Tombol Download Struk -->
-                    <button id="downloadStrukBtn" class="btn-download active">
-                        <svg viewBox="0 0 24 24">
+                    <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
                         Download Struk
@@ -1114,22 +288,24 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">
-                <div class="footer-logo-icon">W</div>
-                <span class="footer-logo-text">Wartan.</span>
+    <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">W</div>
+                <span class="font-bold text-xl text-slate-900">Wartan.</span>
             </div>
-            <p class="footer-copyright">© 2026 Wartan - Pemesanan Makanan & Minuman</p>
-            <div class="social-links">
-                <a href="#" class="social-link">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
+            <p class="text-slate-500 text-sm font-medium">© 2026 Wartan - Pemesanan Makanan & Minuman</p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
                     </svg>
                 </a>
-                <a href="#" class="social-link">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"></path>
+                <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
                     </svg>
                 </a>
             </div>
