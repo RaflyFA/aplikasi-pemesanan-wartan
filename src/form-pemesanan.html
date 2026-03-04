@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,8 @@
     <!-- Google Fonts: Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,35 +56,48 @@
 
 
 </head>
+
 <body class="font-['Poppins'] bg-slate-50 text-slate-800 min-h-screen flex flex-col overflow-x-hidden relative">
 
     <!-- Background Ornaments -->
     <div class="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
-        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob"></div>
-        <div class="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-teal-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-primary-200/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-4000"></div>
+        <div
+            class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-teal-300/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-2000">
+        </div>
+        <div
+            class="absolute bottom-[-20%] left-[20%] w-[600px] h-[600px] bg-primary-200/30 rounded-full mix-blend-multiply blur-[80px] opacity-70 animate-blob animation-delay-4000">
+        </div>
     </div>
 
     <!-- NAVBAR -->
-    <header class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/30 shadow-sm h-20 flex items-center">
+    <header
+        class="fixed w-full top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/30 shadow-sm h-20 flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="flex justify-between items-center">
                 <a href="index.html" class="flex items-center gap-3 group cursor-pointer">
-                    <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-primary-500/40 group-hover:rotate-12 transition-transform duration-300">
+                    <div
+                        class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-primary-500/40 group-hover:rotate-12 transition-transform duration-300">
                         W
                     </div>
-                    <span class="font-bold text-2xl tracking-tight text-slate-900">Wartan<span class="text-primary-600 text-3xl leading-none">.</span></span>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Wartan<span
+                            class="text-primary-600 text-3xl leading-none">.</span></span>
                 </a>
 
                 <nav class="hidden md:flex gap-10 items-center">
-                    <a href="index.html" class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</a>
-                    <a href="menu.html" class="text-primary-600 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary-600 after:rounded-full">Menu</a>
+                    <a href="index.html"
+                        class="text-slate-600 hover:text-primary-600 font-medium transition-colors">Beranda</a>
+                    <a href="menu.html"
+                        class="text-primary-600 font-semibold relative after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5 after:bg-primary-600 after:rounded-full">Menu</a>
                 </nav>
 
                 <div class="md:hidden flex items-center">
                     <button class="text-slate-600 hover:text-slate-900 p-2 bg-slate-100 rounded-lg">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
                     </button>
                 </div>
@@ -95,17 +110,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Page Header -->
             <div class="text-center mb-12">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mb-4">
+                <div
+                    class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mb-4">
                     <span class="relative flex h-3 w-3">
-                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-primary-500"></span>
                     </span>
                     Lengkapi Data Pemesanan
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-                    Konfirmasi <span class="bg-gradient-to-r from-primary-600 to-teal-500 bg-clip-text text-transparent">Pesanan Kamu</span>
+                    Konfirmasi <span
+                        class="bg-gradient-to-r from-primary-600 to-teal-500 bg-clip-text text-transparent">Pesanan
+                        Kamu</span>
                 </h1>
-                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Isi data diri untuk melanjutkan pemesanan menu yang telah dipilih.</p>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Isi data diri untuk melanjutkan pemesanan menu yang
+                    telah dipilih.</p>
             </div>
 
             <!-- Grid 2 Kolom -->
@@ -113,42 +133,52 @@
                 <!-- KOLOM KIRI: FORM PEMESANAN -->
                 <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200/60">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <span class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+                        <span
+                            class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                <path
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                                </path>
                             </svg>
                         </span>
                         Data Diri
                     </h2>
 
                     <!-- Ringkasan Pesanan -->
-                    <div class="bg-gradient-to-br from-primary-50 to-slate-50 rounded-xl p-6 mb-8 border-2 border-primary-200">
+                    <div
+                        class="bg-gradient-to-br from-primary-50 to-slate-50 rounded-xl p-6 mb-8 border-2 border-primary-200">
                         <div class="flex items-center gap-2 text-primary-700 font-semibold mb-4">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                                <path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                             </svg>
                             Ringkasan Pesanan
                         </div>
-                        
+
                         <div class="bg-white rounded-xl p-4 mb-3 border border-slate-200 flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80" alt="Nasi Goreng" class="w-20 h-20 rounded-lg object-cover">
+                            <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80"
+                                alt="Nasi Goreng" class="w-20 h-20 rounded-lg object-cover">
                             <div class="flex-1">
                                 <div class="font-bold text-slate-800">Nasi Goreng Spesial</div>
                                 <div class="text-primary-600 font-semibold text-lg">Rp 20.000</div>
                                 <div class="flex items-center gap-2 text-sm text-slate-500 mt-1">
-                                    <span class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">2 porsi</span>
+                                    <span
+                                        class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">2
+                                        porsi</span>
                                     <span>Level: Level 2</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="bg-white rounded-xl p-4 mb-3 border border-slate-200 flex gap-4">
-                            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80" alt="Es Teh" class="w-20 h-20 rounded-lg object-cover">
+                            <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80"
+                                alt="Es Teh" class="w-20 h-20 rounded-lg object-cover">
                             <div class="flex-1">
                                 <div class="font-bold text-slate-800">Es Teh Manis</div>
                                 <div class="text-primary-600 font-semibold text-lg">Rp 5.000</div>
                                 <div class="flex items-center gap-2 text-sm text-slate-500 mt-1">
-                                    <span class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">1 porsi</span>
+                                    <span
+                                        class="bg-primary-100 text-primary-700 px-2 py-0.5 rounded-full font-semibold">1
+                                        porsi</span>
                                     <span>Es: Reguler</span>
                                 </div>
                             </div>
@@ -163,30 +193,46 @@
                     <form class="space-y-5">
                         <!-- Nama Pelanggan -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Nama Lengkap <span class="text-red-500">*</span></label>
-                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Masukkan nama lengkap" required>
+                            <label for="input-nama-lengkap" class="block text-sm font-medium text-slate-600 mb-1">Nama
+                                Lengkap <span class="text-red-500">*</span></label>
+                            <input id="input-nama-lengkap" type="text"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                                placeholder="Masukkan nama lengkap" required>
                         </div>
 
                         <!-- No HP -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Nomor HP / WhatsApp <span class="text-red-500">*</span></label>
-                            <input type="tel" class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="081234567890" required>
+                            <label for="input-nomor-hp" class="block text-sm font-medium text-slate-600 mb-1">Nomor HP /
+                                WhatsApp <span class="text-red-500">*</span></label>
+                            <input id="input-nomor-hp" type="tel"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                                placeholder="081234567890" required>
                         </div>
 
                         <!-- Alamat -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Alamat Lengkap <span class="text-red-500">*</span></label>
-                            <textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Masukkan alamat lengkap untuk pengiriman" rows="3" required></textarea>
+                            <label for="input-alamat-lengkap"
+                                class="block text-sm font-medium text-slate-600 mb-1">Alamat Lengkap <span
+                                    class="text-red-500">*</span></label>
+                            <textarea id="input-alamat-lengkap"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                                placeholder="Masukkan alamat lengkap untuk pengiriman" rows="3" required></textarea>
                         </div>
 
                         <!-- Catatan Tambahan -->
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Catatan Tambahan (Opsional)</label>
-                            <textarea class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all" placeholder="Contoh: Tolong pisahkan sambalnya, diantar sebelum jam 5 sore..." rows="3"></textarea>
+                            <label for="input-catatan-tambahan"
+                                class="block text-sm font-medium text-slate-600 mb-1">Catatan Tambahan
+                                (Opsional)</label>
+                            <textarea id="input-catatan-tambahan"
+                                class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/50 focus:border-primary-400 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                                placeholder="Contoh: Tolong pisahkan sambalnya, diantar sebelum jam 5 sore..."
+                                rows="3"></textarea>
                         </div>
 
                         <!-- Tombol Submit -->
-                        <button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-6 rounded-xl text-lg transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <button type="submit"
+                            class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-4 px-6 rounded-xl text-lg transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M5 13l4 4L19 7"></path>
                             </svg>
@@ -198,20 +244,26 @@
                 <!-- KOLOM KANAN: STRUK DIGITAL -->
                 <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200/60">
                     <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-                        <span class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
+                        <span
+                            class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-600">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                <path
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
                             </svg>
                         </span>
                         Struk Digital
                     </h2>
 
                     <!-- Area Struk -->
-                    <div class="bg-gradient-to-br from-slate-50 to-white rounded-xl p-6 border-2 border-dashed border-primary-200 mb-6">
+                    <div id="receipt-area"
+                        class="bg-gradient-to-br from-slate-50 to-white rounded-xl p-6 border-2 border-dashed border-primary-200 mb-6">
                         <!-- Struk Content -->
                         <div>
                             <div class="text-center border-b-2 border-dashed border-slate-200 pb-4 mb-4">
-                                <div class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-2">W</div>
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-700 rounded-xl flex items-center justify-center text-white font-bold text-xl mx-auto mb-2">
+                                    W</div>
                                 <h3 class="font-bold text-xl text-slate-800">WARTAN</h3>
                                 <p class="text-xs text-slate-500">Warung Makan & Minuman</p>
                                 <p class="text-xs text-slate-400 mt-1">Struk #WRT-2026-042</p>
@@ -228,7 +280,9 @@
                                 </div>
                                 <div class="mt-2">
                                     <span class="text-sm text-slate-500 block mb-1">Alamat Lengkap:</span>
-                                    <span class="text-sm font-medium text-slate-700 block bg-slate-100 p-2 rounded-lg">Jl. Sudirman No. 123, Jakarta Selatan</span>
+                                    <span
+                                        class="text-sm font-medium text-slate-700 block bg-slate-100 p-2 rounded-lg">Jl.
+                                        Sudirman No. 123, Jakarta Selatan</span>
                                 </div>
                                 <div class="flex justify-between text-sm mt-2">
                                     <span class="text-slate-500">Tanggal:</span>
@@ -268,7 +322,8 @@
                                 <span class="font-extrabold text-primary-600 text-xl">Rp 50.000</span>
                             </div>
 
-                            <div class="text-center text-xs text-slate-400 border-t-2 border-dashed border-slate-200 pt-4 mt-2">
+                            <div
+                                class="text-center text-xs text-slate-400 border-t-2 border-dashed border-slate-200 pt-4 mt-2">
                                 <p>Terima kasih telah memesan di Wartan!</p>
                                 <p class="mt-1">*Struk ini merupakan bukti pemesanan digital</p>
                             </div>
@@ -276,11 +331,18 @@
                     </div>
 
                     <!-- Tombol Download Struk -->
-                    <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <button id="btn-download-struk" type="button"
+                        class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-xl transition-all shadow-xl shadow-primary-600/30 hover:-translate-y-1 flex items-center justify-center gap-2">
+                        <svg id="icon-download-default" class="w-5 h-5" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
                             <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
                         </svg>
-                        Download Struk
+                        <svg id="icon-download-loading" class="hidden w-5 h-5 animate-spin" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 12a8 8 0 018-8v8H4z" fill="currentColor" opacity="0.3" />
+                            <path d="M12 4a8 8 0 010 16" stroke-linecap="round" />
+                        </svg>
+                        <span id="label-download-struk">Download Struk</span>
                     </button>
                 </div>
             </div>
@@ -289,9 +351,12 @@
 
     <!-- FOOTER -->
     <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">W</div>
+                <div
+                    class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                    W</div>
                 <span class="font-bold text-xl text-slate-900">Wartan.</span>
             </div>
             <p class="text-slate-500 text-sm font-medium">© 2026 Wartan - Pemesanan Makanan & Minuman</p>
@@ -299,17 +364,85 @@
                 <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
                     <span class="sr-only">Facebook</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
                     </svg>
                 </a>
                 <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
                     <span class="sr-only">Instagram</span>
                     <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd" />
                     </svg>
                 </a>
             </div>
         </div>
     </footer>
+
+    <!-- html2canvas untuk fitur download struk sebagai gambar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- ✅ MODAL SUKSES PESANAN -->
+    <div id="modal-sukses" class="hidden fixed inset-0 z-[100] items-center justify-center p-4"
+        style="background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(6px);">
+
+        <!-- Panel Modal -->
+        <div id="modal-panel"
+            class="bg-white rounded-3xl shadow-2xl w-full max-w-sm p-8 text-center transform transition-all duration-300 scale-95 opacity-0">
+
+            <!-- Ikon Sukses Animasi -->
+            <div class="relative w-28 h-28 mx-auto mb-6">
+                <div class="absolute inset-0 bg-primary-100 rounded-full animate-ping opacity-60"></div>
+                <div class="absolute inset-2 bg-primary-200 rounded-full animate-ping opacity-40"
+                    style="animation-delay: 0.15s;"></div>
+                <div
+                    class="relative z-10 w-full h-full bg-gradient-to-br from-primary-500 to-primary-700 rounded-full flex items-center justify-center shadow-xl shadow-primary-500/40">
+                    <svg class="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Judul & Pesan -->
+            <h2 class="text-2xl font-bold text-slate-900 mb-1">Pesanan Berhasil! 🎉</h2>
+            <p class="text-slate-500 text-sm mb-5">Pesananmu sudah kami terima.<br>
+                <span class="font-semibold text-slate-700">Tunggu pesanan sampai ke rumah kamu!</span> 🚀
+            </p>
+
+            <!-- Info Ringkas Pesanan -->
+            <div class="bg-primary-50 border border-primary-200 rounded-2xl p-4 mb-6 text-left space-y-2">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-slate-500">Menu dipesan:</span>
+                    <span id="modal-nama-menu" class="font-semibold text-slate-800 text-right max-w-[55%]">-</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-slate-500">Jumlah:</span>
+                    <span id="modal-jumlah-porsi" class="font-semibold text-slate-800">-</span>
+                </div>
+                <div class="border-t border-primary-200 pt-2 flex justify-between items-center">
+                    <span class="font-semibold text-slate-600">Total Bayar:</span>
+                    <span id="modal-total" class="font-extrabold text-primary-600 text-lg">-</span>
+                </div>
+            </div>
+
+            <!-- Tombol Aksi -->
+            <div class="flex flex-col gap-3">
+                <button id="modal-btn-tutup" type="button"
+                    class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 rounded-xl transition-all shadow-lg shadow-primary-600/30 hover:-translate-y-0.5">
+                    Oke, Terima Kasih! 👍
+                </button>
+                <a href="index.html"
+                    class="text-slate-400 hover:text-primary-600 text-sm font-medium transition-colors py-1">
+                    ← Kembali ke Beranda
+                </a>
+            </div>
+        </div>
+    </div>
+
 </body>
+
 </html>

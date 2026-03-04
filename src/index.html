@@ -161,9 +161,9 @@
 
                     <!-- Grup Tombol CTA -->
                     <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-                        <a href="#"
+                        <a href="#menu"
                             class="inline-flex justify-center items-center bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all shadow-xl shadow-primary-600/30 transform hover:-translate-y-1">
-                            Pesan Sekarang
+                            Lihat Menu
                             <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none"
                                 stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -249,360 +249,444 @@
 
     <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
 
-    <!-- Header Section -->
-    <div class="text-center mb-12">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mb-4">
-            🍽️ Menu Kami
-        </span>
-        <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
-            Pilihan Menu <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-teal-500">Lezat</span>
-        </h2>
-        <p class="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
-            Cita rasa autentik masakan Warung Tanjakan, siap dipesan kapan saja untukmu.
-        </p>
-    </div>
-
-    <!-- Search Bar + Filter -->
-    <div class="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
-
-        <!-- Search Bar -->
-        <div class="relative w-full sm:max-w-xs">
-            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-            </svg>
-            <input type="text" id="search-menu" oninput="cariMenu(this.value)" placeholder="Cari menu..."
-                class="w-full pl-10 pr-4 py-2.5 rounded-full border-2 border-slate-200 focus:border-primary-400 focus:outline-none text-sm text-slate-700 bg-white/80 backdrop-blur-sm transition-all"/>
+        <!-- Header Section -->
+        <div class="text-center mb-12">
+            <span
+                class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary-50 border border-primary-200 text-primary-700 font-semibold text-sm mb-4">
+                🍽️ Menu Kami
+            </span>
+            <h2 class="text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
+                Pilihan Menu <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-teal-500">Lezat</span>
+            </h2>
+            <p class="mt-4 text-slate-500 text-lg max-w-2xl mx-auto">
+                Cita rasa autentik masakan Warung Tanjakan, siap dipesan kapan saja untukmu.
+            </p>
         </div>
 
-        <!-- Filter Tabs -->
-        <div class="flex flex-wrap gap-2">
-            <button onclick="filterMenu(this, 'semua')" class="filter-tab active px-4 py-2 rounded-full border-2 border-primary-600 bg-primary-600 text-white font-semibold text-sm transition-all duration-200">
-                Semua
-            </button>
-            <button onclick="filterMenu(this, 'tersedia')" class="filter-tab px-4 py-2 rounded-full border-2 border-slate-200 text-slate-600 font-semibold text-sm transition-all duration-200 hover:border-primary-400 hover:text-primary-600">
-                ✅ Tersedia
-            </button>
-            <button onclick="filterMenu(this, 'habis')" class="filter-tab px-4 py-2 rounded-full border-2 border-slate-200 text-slate-600 font-semibold text-sm transition-all duration-200 hover:border-red-300 hover:text-red-500">
-                ❌ Habis
-            </button>
-        </div>
-    </div>
+        <!-- Search Bar + Filter -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-between items-center mb-8">
 
-    <!-- Grid 6 Kartu Menu -->
-    <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Search Bar -->
+            <div class="relative w-full sm:max-w-xs">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-menu" oninput="cariMenu(this.value)" placeholder="Cari menu..."
+                    class="w-full pl-10 pr-4 py-2.5 rounded-full border-2 border-slate-200 focus:border-primary-400 focus:outline-none text-sm text-slate-700 bg-white/80 backdrop-blur-sm transition-all" />
+            </div>
 
-        <!-- ========== CARD 1: Nasi Goreng Spesial (TERSEDIA) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia" data-nama="nasi goreng spesial">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80"
-                    alt="Nasi Goreng Spesial" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                <!-- Harga -->
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
-                    Rp 20.000
-                </div>
-                <!-- Badge Status TERSEDIA -->
-                <div class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
-                </div>
-            </div>
-            <div class="p-5">
-                <!-- Badge Varian Rasa -->
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️ Pedas</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂 Gurih</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-1">Nasi Goreng Spesial</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                    Nasi goreng wok dengan telur mata sapi, ayam suwir, kecap manis, dan kerupuk renyah.
-                </p>
-                <!-- Rating -->
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
-                </div>
-                <!-- Quantity Selector + Tombol -->
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
-                        <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
-                    </div>
-                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
-                        class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== CARD 2: Mie Ayam Bakso (TERSEDIA) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia" data-nama="mie ayam bakso">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80"
-                    alt="Mie Ayam Bakso" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
-                    Rp 18.000
-                </div>
-                <div class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂 Gurih</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Kuah / Kering</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-1">Mie Ayam Bakso</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                    Mie kenyal dengan cincang ayam berbumbu, bakso sapi kenyal, dan kuah kaldu hangat.
-                </p>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
-                </div>
-                <!-- Quantity Selector + Tombol -->
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
-                        <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
-                    </div>
-                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
-                        class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!-- ========== CARD 3: Soto Ayam (HABIS) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white opacity-75" data-status="habis" data-nama="soto ayam">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80"
-                    alt="Soto Ayam" class="w-full h-full object-cover grayscale transition-transform duration-500">
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-slate-400 shadow">
-                    Rp 15.000
-                </div>
-                <!-- Badge Status HABIS -->
-                <div class="badge-status absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    ✕ Habis
-                </div>
-                <!-- Overlay Habis -->
-                <div class="absolute inset-0 bg-slate-900/20 flex items-center justify-center">
-                    <span class="bg-red-500 text-white font-bold px-6 py-2 rounded-full text-sm shadow-xl rotate-[-8deg]">STOK HABIS</span>
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🧂 Gurih</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🌶️ Pedas</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-400 mb-1">Soto Ayam</h3>
-                <p class="text-sm text-slate-400 leading-relaxed mb-3">
-                    Kuah bening kunyit segar, potongan ayam lembut, tauge, telur rebus, dan jeruk nipis.
-                </p>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-200 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-300 font-medium">Belum ada ulasan</span>
-                </div>
-                <!-- Tombol Non-Aktif karena HABIS -->
-                <button disabled
-                    class="w-full text-slate-400 font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-slate-100 cursor-not-allowed border-2 border-slate-200">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                    </svg>
-                    Menu Habis
+            <!-- Filter Tabs -->
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterMenu(this, 'semua')"
+                    class="filter-tab active px-4 py-2 rounded-full border-2 border-primary-600 bg-primary-600 text-white font-semibold text-sm transition-all duration-200">
+                    Semua
+                </button>
+                <button onclick="filterMenu(this, 'tersedia')"
+                    class="filter-tab px-4 py-2 rounded-full border-2 border-slate-200 text-slate-600 font-semibold text-sm transition-all duration-200 hover:border-primary-400 hover:text-primary-600">
+                    ✅ Tersedia
+                </button>
+                <button onclick="filterMenu(this, 'habis')"
+                    class="filter-tab px-4 py-2 rounded-full border-2 border-slate-200 text-slate-600 font-semibold text-sm transition-all duration-200 hover:border-red-300 hover:text-red-500">
+                    ❌ Habis
                 </button>
             </div>
         </div>
 
-        <!-- ========== CARD 4: Bakso Malang (TERSEDIA) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia" data-nama="bakso malang">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80"
-                    alt="Bakso Malang" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
-                    Rp 20.000
-                </div>
-                <div class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
-                </div>
-                <!-- Badge Populer -->
-                <div class="absolute bottom-3 left-3 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-                    🔥 Populer
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂 Gurih</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️ Pedas</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Komplit</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-1">Bakso Malang</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                    Bakso daging sapi kenyal jumbo, tahu goreng, mie, dan kuah kaldu sapi pekat nan gurih.
-                </p>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
-                </div>
-                <!-- Quantity Selector + Tombol -->
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
-                        <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
-                    </div>
-                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
-                        class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
+        <!-- Grid 6 Kartu Menu -->
+        <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
-        <!-- ========== CARD 5: Gado-Gado (HABIS) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white opacity-75" data-status="habis" data-nama="gado-gado">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80"
-                    alt="Gado-Gado" class="w-full h-full object-cover grayscale">
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-slate-400 shadow">
-                    Rp 15.000
-                </div>
-                <div class="badge-status absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    ✕ Habis
-                </div>
-                <div class="absolute inset-0 bg-slate-900/20 flex items-center justify-center">
-                    <span class="bg-red-500 text-white font-bold px-6 py-2 rounded-full text-sm shadow-xl rotate-[-8deg]">STOK HABIS</span>
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🍯 Manis</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🧂 Gurih</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-400 mb-1">Gado-Gado</h3>
-                <p class="text-sm text-slate-400 leading-relaxed mb-3">
-                    Sayuran rebus segar, tahu, tempe, telur, disiram bumbu kacang legit dengan lontong.
-                </p>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-200 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-300 font-medium">Belum ada ulasan</span>
-                </div>
-                <button disabled
-                    class="w-full text-slate-400 font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-slate-100 cursor-not-allowed border-2 border-slate-200">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                    </svg>
-                    Menu Habis
-                </button>
-            </div>
-        </div>
-
-        <!-- ========== CARD 6: Rendang Sapi (TERSEDIA) ========== -->
-        <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia" data-nama="rendang sapi">
-            <div class="overflow-hidden h-52 relative">
-                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80"
-                    alt="Rendang Sapi" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
-                    Rp 30.000
-                </div>
-                <div class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
-                    <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="flex flex-wrap gap-2 mb-3">
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️ Pedas</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂 Gurih</span>
-                    <span class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Tidak Pedas</span>
-                </div>
-                <h3 class="font-bold text-lg text-slate-900 mb-1">Rendang Sapi</h3>
-                <p class="text-sm text-slate-500 leading-relaxed mb-3">
-                    Daging sapi empuk dimasak lama dengan 40+ rempah khas Padang, kaya cita rasa.
-                </p>
-                <div class="flex items-center gap-2 mb-4">
-                    <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
-                    <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
-                </div>
-                <!-- Quantity Selector + Tombol -->
-                <div class="flex items-center gap-3">
-                    <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
-                        <span class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
-                        <button type="button" onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1" class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
-                    </div>
-                    <button onclick="tambahKeranjang(this, 'Nama Menu', harga)"
-                        class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
-                        </svg>
-                        Pesan Sekarang
-                    </button>
-                </div>
-            </div>
-        </div>
-
-    </div><!-- /#menu-grid -->
-
-    <!-- Pesan jika tidak ditemukan -->
-    <div id="menu-kosong" class="hidden text-center py-16">
-        <p class="text-5xl mb-4">🔍</p>
-        <p class="text-slate-500 font-medium text-lg">Menu tidak ditemukan.</p>
-        <p class="text-slate-400 text-sm mt-1">Coba kata kunci lain.</p>
-    </div>
-
-</section>
-
-
-
-    <script>
-        // Anggota 3: Buat logika klik tombol dan hitung total harga di bawah ini
-
-    </script>
-
-        <!-- ✅ FOOTER -->
-        <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
-            <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-2">
+            <!-- ========== CARD 1: Nasi Goreng Spesial (TERSEDIA) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia"
+                data-nama="nasi goreng spesial">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80"
+                        alt="Nasi Goreng Spesial"
+                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <!-- Harga -->
                     <div
-                        class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
-                        W</div>
-                    <span class="font-bold text-xl text-slate-900">Wartan.</span>
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
+                        Rp 20.000
+                    </div>
+                    <!-- Badge Status TERSEDIA -->
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
+                    </div>
                 </div>
-                <p class="text-slate-500 text-sm font-medium">© 2026 Aplikasi Pemesanan Wartan. Semua Hak Cipta
-                    Dilindungi.
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
-                        <span class="sr-only">Facebook</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
-                    <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
-                        <span class="sr-only">Instagram</span>
-                        <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path fill-rule="evenodd"
-                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </a>
+                <div class="p-5">
+                    <!-- Badge Varian Rasa -->
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️
+                            Pedas</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂
+                            Gurih</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Nasi Goreng Spesial</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-3">
+                        Nasi goreng wok dengan telur mata sapi, ayam suwir, kecap manis, dan kerupuk renyah.
+                    </p>
+                    <!-- Rating -->
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <!-- Quantity Selector + Tombol -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                            <span
+                                class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        </div>
+                        <button type="button"
+                            class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Pesan Sekarang
+                        </button>
+                    </div>
                 </div>
             </div>
-        </footer>
+
+            <!-- ========== CARD 2: Mie Ayam Bakso (TERSEDIA) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia"
+                data-nama="mie ayam bakso">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=600&q=80"
+                        alt="Mie Ayam Bakso"
+                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
+                        Rp 18.000
+                    </div>
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂
+                            Gurih</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Kuah
+                            / Kering</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Mie Ayam Bakso</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-3">
+                        Mie kenyal dengan cincang ayam berbumbu, bakso sapi kenyal, dan kuah kaldu hangat.
+                    </p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <!-- Quantity Selector + Tombol -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                            <span
+                                class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        </div>
+                        <button type="button"
+                            class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== CARD 3: Soto Ayam (HABIS) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white opacity-75" data-status="habis"
+                data-nama="soto ayam">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Soto Ayam"
+                        class="w-full h-full object-cover grayscale transition-transform duration-500">
+                    <div
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-slate-400 shadow">
+                        Rp 15.000
+                    </div>
+                    <!-- Badge Status HABIS -->
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        ✕ Habis
+                    </div>
+                    <!-- Overlay Habis -->
+                    <div class="absolute inset-0 bg-slate-900/20 flex items-center justify-center">
+                        <span
+                            class="bg-red-500 text-white font-bold px-6 py-2 rounded-full text-sm shadow-xl rotate-[-8deg]">STOK
+                            HABIS</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🧂
+                            Gurih</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🌶️
+                            Pedas</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-400 mb-1">Soto Ayam</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-3">
+                        Kuah bening kunyit segar, potongan ayam lembut, tauge, telur rebus, dan jeruk nipis.
+                    </p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-200 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-300 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <!-- Tombol Non-Aktif karena HABIS -->
+                    <button disabled
+                        class="w-full text-slate-400 font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-slate-100 cursor-not-allowed border-2 border-slate-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
+                        Menu Habis
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========== CARD 4: Bakso Malang (TERSEDIA) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia"
+                data-nama="bakso malang">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=600&q=80"
+                        alt="Bakso Malang"
+                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
+                        Rp 20.000
+                    </div>
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
+                    </div>
+                    <!-- Badge Populer -->
+                    <div
+                        class="absolute bottom-3 left-3 bg-amber-400 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        🔥 Populer
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂
+                            Gurih</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️
+                            Pedas</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Komplit</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Bakso Malang</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-3">
+                        Bakso daging sapi kenyal jumbo, tahu goreng, mie, dan kuah kaldu sapi pekat nan gurih.
+                    </p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <!-- Quantity Selector + Tombol -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                            <span
+                                class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        </div>
+                        <button type="button"
+                            class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========== CARD 5: Gado-Gado (HABIS) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white opacity-75" data-status="habis"
+                data-nama="gado-gado">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80" alt="Gado-Gado"
+                        class="w-full h-full object-cover grayscale">
+                    <div
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-slate-400 shadow">
+                        Rp 15.000
+                    </div>
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        ✕ Habis
+                    </div>
+                    <div class="absolute inset-0 bg-slate-900/20 flex items-center justify-center">
+                        <span
+                            class="bg-red-500 text-white font-bold px-6 py-2 rounded-full text-sm shadow-xl rotate-[-8deg]">STOK
+                            HABIS</span>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🍯
+                            Manis</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-400 border-slate-200">🧂
+                            Gurih</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-400 mb-1">Gado-Gado</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-3">
+                        Sayuran rebus segar, tahu, tempe, telur, disiram bumbu kacang legit dengan lontong.
+                    </p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-200 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-300 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <button disabled
+                        class="w-full text-slate-400 font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-slate-100 cursor-not-allowed border-2 border-slate-200">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
+                        Menu Habis
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========== CARD 6: Rendang Sapi (TERSEDIA) ========== -->
+            <div class="menu-card rounded-2xl overflow-hidden shadow-md bg-white" data-status="tersedia"
+                data-nama="rendang sapi">
+                <div class="overflow-hidden h-52 relative">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80"
+                        alt="Rendang Sapi"
+                        class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    <div
+                        class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-primary-700 shadow">
+                        Rp 30.000
+                    </div>
+                    <div
+                        class="badge-status absolute top-3 left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 bg-white rounded-full inline-block animate-ping"></span> Tersedia
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="flex flex-wrap gap-2 mb-3">
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-red-50 text-red-600 border-red-200">🌶️
+                            Pedas</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-primary-50 text-primary-600 border-primary-200">🧂
+                            Gurih</span>
+                        <span
+                            class="text-xs font-semibold px-2.5 py-1 rounded-full border bg-slate-50 text-slate-500 border-slate-200">Tidak
+                            Pedas</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Rendang Sapi</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed mb-3">
+                        Daging sapi empuk dimasak lama dengan 40+ rempah khas Padang, kaya cita rasa.
+                    </p>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="text-gray-300 text-lg tracking-widest">☆☆☆☆☆</span>
+                        <span class="text-xs text-slate-400 font-medium">Belum ada ulasan</span>
+                    </div>
+                    <!-- Quantity Selector + Tombol -->
+                    <div class="flex items-center gap-3">
+                        <div class="flex items-center border-2 border-slate-200 rounded-xl overflow-hidden">
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = Math.max(1, parseInt(this.parentElement.querySelector('.qty-display').textContent) - 1)"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">−</button>
+                            <span
+                                class="qty-display px-3 py-2 text-sm font-bold text-slate-800 min-w-[2rem] text-center">1</span>
+                            <button type="button"
+                                onclick="this.parentElement.querySelector('.qty-display').textContent = parseInt(this.parentElement.querySelector('.qty-display').textContent) + 1"
+                                class="px-3 py-2 text-slate-600 hover:bg-slate-100 font-bold text-lg transition-colors">+</button>
+                        </div>
+                        <button type="button"
+                            class="btn-pesan flex-1 text-white font-semibold py-2.5 rounded-xl flex items-center justify-center gap-2 text-sm bg-gradient-to-r from-primary-600 to-teal-600 hover:opacity-90 transition-all hover:-translate-y-1 shadow-lg shadow-primary-500/20">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                            Pesan Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /#menu-grid -->
+
+        <!-- Pesan jika tidak ditemukan -->
+        <div id="menu-kosong" class="hidden text-center py-16">
+            <p class="text-5xl mb-4">🔍</p>
+            <p class="text-slate-500 font-medium text-lg">Menu tidak ditemukan.</p>
+            <p class="text-slate-400 text-sm mt-1">Coba kata kunci lain.</p>
+        </div>
+
+    </section>
+
+
+
+    <script src="./script.js"></script>
+
+    <!-- ✅ FOOTER -->
+    <footer class="bg-white border-t border-slate-200 mt-auto w-full z-10 relative">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                    W</div>
+                <span class="font-bold text-xl text-slate-900">Wartan.</span>
+            </div>
+            <p class="text-slate-500 text-sm font-medium">© 2026 Aplikasi Pemesanan Wartan. Semua Hak Cipta
+                Dilindungi.
+            </p>
+            <div class="flex space-x-4">
+                <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                    <span class="sr-only">Facebook</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+                <a href="#" class="text-slate-400 hover:text-primary-600 transition-colors">
+                    <span class="sr-only">Instagram</span>
+                    <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
